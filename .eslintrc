@@ -4,10 +4,13 @@
     "jest": true
   },
   "globals": {
-    "document": true
+    "document": true,
+    "window": true
   },
   "rules": {
     "import/no-unresolved": 1,
+    "import/prefer-default-export": 0,
+    "import/no-extraneous-dependencies": 0,
     "react/jsx-filename-extension": [
       1,
       {
