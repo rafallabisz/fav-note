@@ -73,8 +73,8 @@ const Card = ({ cardType }) => (
     <InnerWrapper activeColor={cardType}>
       <StyledHeading>Hello Roman</StyledHeading>
       <DateInfo>3 days</DateInfo>
-      {cardType === 'article' && <StyledAvatar src="https://avatars.io/twitter/hello_roman" />}
-      {cardType === 'twitter' && <StyledLinkButton href="https://www.youtube.com/" />}
+      {cardType === 'twitter' && <StyledAvatar src="https://avatars.io/twitter/hello_roman" />}
+      {cardType === 'article' && <StyledLinkButton href="https://www.youtube.com/" />}
     </InnerWrapper>
     <InnerWrapper flex>
       <Paragraph>
