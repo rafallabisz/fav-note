@@ -1,1 +1,1 @@
-### Fav-note - app in building
+### Fav-note
