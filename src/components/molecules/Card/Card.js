@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import Heading from 'components/atoms/Heading/Heading';
@@ -74,7 +75,7 @@ class Card extends Component {
   };
 
   render() {
-    const { cardType, title, created, twitterName, articleUrl, content } = this.props;
+    const { id, cardType, title, created, twitterName, articleUrl, content } = this.props;
     return (
       <StyledWrapper>
         <InnerWrapper activeColor={cardType}>
