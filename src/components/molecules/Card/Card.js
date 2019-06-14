@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import Heading from 'components/atoms/Heading/Heading';
@@ -37,7 +37,7 @@ const InnerWrapper = styled.div`
 const StyledAvatar = styled.img`
   width: 86px;
   height: 86px;
-  border: 5px solid ${({ theme }) => theme.twitter};
+  border: 5px solid ${({ theme }) => theme.twitters};
   position: absolute;
   top: 25px;
   right: 25px;
@@ -68,30 +68,45 @@ const StyledHeading = styled(Heading)`
   margin: 5px 0 0;
 `;
 
-const Card = ({ cardType }) => (
-  <StyledWrapper>
-    <InnerWrapper activeColor={cardType}>
-      <StyledHeading>Hello Roman</StyledHeading>
-      <DateInfo>3 days</DateInfo>
-      {cardType === 'twitter' && <StyledAvatar src="https://avatars.io/twitter/hello_roman" />}
-      {cardType === 'article' && <StyledLinkButton href="https://www.youtube.com/" />}
-    </InnerWrapper>
-    <InnerWrapper flex>
-      <Paragraph>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit nemo ducimus fuga
-        repellendus illum
-      </Paragraph>
-      <Button secondary>Remove</Button>
-    </InnerWrapper>
-  </StyledWrapper>
-);
+class Card extends Component {
+  state: {
+    redirect: false,
+  };
+
+  render() {
+    const { cardType, title, created, twitterName, articleUrl, content } = this.props;
+    return (
+      <StyledWrapper>
+        <InnerWrapper activeColor={cardType}>
+          <StyledHeading>{title}</StyledHeading>
+          <DateInfo>{created}</DateInfo>
+          {cardType === 'twitters' && (
+            <StyledAvatar src={`https://avatars.io/twitter/${twitterName}`} />
+          )}
+          {cardType === 'articles' && <StyledLinkButton href={articleUrl} />}
+        </InnerWrapper>
+        <InnerWrapper flex>
+          <Paragraph>{content}</Paragraph>
+          <Button secondary>Remove</Button>
+        </InnerWrapper>
+      </StyledWrapper>
+    );
+  }
+}
 
 Card.propTypes = {
-  cardType: PropTypes.oneOf(['note', 'twitter', 'article']),
+  cardType: PropTypes.oneOf(['notes', 'twitters', 'articles']),
+  title: PropTypes.string.isRequired,
+  created: PropTypes.string.isRequired,
+  twitterName: PropTypes.string,
+  articleUrl: PropTypes.string,
+  content: PropTypes.string.isRequired,
 };
 
 Card.defaultProps = {
-  cardType: 'note',
+  cardType: 'notes',
+  twitterName: null,
+  articleUrl: null,
 };
 
 export default Card;
