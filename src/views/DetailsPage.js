@@ -20,6 +20,7 @@ class DetailsPage extends Component {
         break;
     }
   }
+
   render() {
     const { match } = this.props;
 
