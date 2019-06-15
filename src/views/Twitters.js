@@ -48,6 +48,7 @@ const Twitters = () => {
           content={content}
           twitterName={twitterName}
           key={id}
+          id={id}
         />
       ))}
     </GridTemplate>

@@ -48,6 +48,7 @@ const Articles = () => {
           content={content}
           articleUrl={articleUrl}
           key={id}
+          id={id}
         />
       ))}
     </GridTemplate>
