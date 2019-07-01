@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import DetailsTemplate from 'templates/DetailsTemplate';
 import { routes } from 'routes';
 
@@ -8,7 +9,9 @@ class DetailsPage extends Component {
   };
 
   componentDidMount() {
-    switch (this.props.match.path) {
+    const { match } = this.props;
+
+    switch (match.path) {
       case routes.twitter:
         this.setState({ pageType: 'twitters' });
         break;
@@ -18,18 +21,43 @@ class DetailsPage extends Component {
       case routes.article:
         this.setState({ pageType: 'articles' });
         break;
+      default:
+        throw new Error('Something went wrong with matching paths');
     }
   }
 
   render() {
-    const { match } = this.props;
+    const dummyArticle = {
+      id: 1,
+      title: 'Wake me up when Vue ends',
+      content:
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
+      twitterName: 'hello_roman',
+      articleUrl: 'https://youtube.com/helloroman',
+      created: '1 day',
+    };
+
+    const { pageType } = this.state;
 
     return (
-      <DetailsTemplate pageType={this.state.pageType}>
-        <p>{this.state.pageType}</p>
+      <DetailsTemplate
+        pageType={pageType}
+        title={dummyArticle.title}
+        created={dummyArticle.created}
+        content={dummyArticle.content}
+        articleUrl={dummyArticle.articleUrl}
+        twitterName={dummyArticle.twitterName}
+      >
+        <p>{pageType}</p>
       </DetailsTemplate>
     );
   }
 }
+
+DetailsPage.propTypes = {
+  match: PropTypes.shape({
+    path: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default DetailsPage;
