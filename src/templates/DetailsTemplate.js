@@ -52,28 +52,26 @@ const StyledImage = styled.img`
   border-radius: 50%;
 `;
 
-const DetailsTemplate = ({ pageType, title, created, content, articleUrl, twitterName }) => {
-  return (
-    <UserPageTemplate pageType={pageType}>
-      <StyledWrapper>
-        <StyledPageHeader>
-          <StyledHeading big as="h1">
-            {title}
-          </StyledHeading>
-          <StyledParagraph>{created}</StyledParagraph>
-        </StyledPageHeader>
-        <Paragraph>{content}</Paragraph>
-        {pageType === 'articles' && <StyledLink href={articleUrl}>Open article</StyledLink>}
-        {pageType === 'twitters' && (
-          <StyledImage alt={title} src={`https://avatars.io/twitter/${twitterName}`} />
-        )}
-        <Button as={Link} to={`/${pageType}`} activeColor={pageType}>
-          save / close
-        </Button>
-      </StyledWrapper>
-    </UserPageTemplate>
-  );
-};
+const DetailsTemplate = ({ pageType, title, created, content, articleUrl, twitterName }) => (
+  <UserPageTemplate pageType={pageType}>
+    <StyledWrapper>
+      <StyledPageHeader>
+        <StyledHeading big as="h1">
+          {title}
+        </StyledHeading>
+        <StyledParagraph>{created}</StyledParagraph>
+      </StyledPageHeader>
+      <Paragraph>{content}</Paragraph>
+      {pageType === 'articles' && <StyledLink href={articleUrl}>Open article</StyledLink>}
+      {pageType === 'twitters' && (
+        <StyledImage alt={title} src={`https://avatars.io/twitter/${twitterName}`} />
+      )}
+      <Button as={Link} to={`/${pageType}`} activeColor={pageType}>
+        save / close
+      </Button>
+    </StyledWrapper>
+  </UserPageTemplate>
+);
 
 DetailsTemplate.propTypes = {
   pageType: PropTypes.string.isRequired,

@@ -47,17 +47,13 @@ class DetailsPage extends Component {
         content={dummyArticle.content}
         articleUrl={dummyArticle.articleUrl}
         twitterName={dummyArticle.twitterName}
-      >
-        <p>{pageType}</p>
-      </DetailsTemplate>
+      />
     );
   }
 }
 
 DetailsPage.propTypes = {
-  match: PropTypes.shape({
-    path: PropTypes.string.isRequired,
-  }).isRequired,
+  match: PropTypes.string.isRequired,
 };
 
 export default DetailsPage;
