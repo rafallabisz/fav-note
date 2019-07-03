@@ -52,6 +52,10 @@ const StyledImage = styled.img`
   border-radius: 50%;
 `;
 
+const StyledButton = styled(Button)`
+  margin-top: 25px;
+`;
+
 const DetailsTemplate = ({ pageType, title, created, content, articleUrl, twitterName }) => (
   <UserPageTemplate pageType={pageType}>
     <StyledWrapper>
@@ -66,9 +70,9 @@ const DetailsTemplate = ({ pageType, title, created, content, articleUrl, twitte
       {pageType === 'twitters' && (
         <StyledImage alt={title} src={`https://avatars.io/twitter/${twitterName}`} />
       )}
-      <Button as={Link} to={`/${pageType}`} activeColor={pageType}>
+      <StyledButton as={Link} to={`/${pageType}`} activeColor={pageType}>
         save / close
-      </Button>
+      </StyledButton>
     </StyledWrapper>
   </UserPageTemplate>
 );
