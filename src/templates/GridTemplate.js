@@ -5,6 +5,7 @@ import Input from 'components/atoms/Input/Input';
 import Heading from 'components/atoms/Heading/Heading';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import UserPageTemplate from 'templates/UserPageTemplate';
+import withContext from 'hoc/withContext';
 
 const StyledWrapper = styled.div`
   padding: 25px 150px 25px 70px;
@@ -32,7 +33,7 @@ const StyledParagraph = styled(Paragraph)`
   font-weight: ${({ theme }) => theme.bold};
 `;
 
-const GridTemplate = ({ children, pageType }) => (
+const GridTemplate = ({ children, pageType, context }) => (
   <UserPageTemplate pageType={pageType}>
     <StyledWrapper>
       <StyledPageHeader>
@@ -55,4 +56,4 @@ GridTemplate.propTypes = {
 GridTemplate.defaultProps = {
   pageType: 'notes',
 };
-export default GridTemplate;
+export default withContext(GridTemplate);
