@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 const Twitters = ({ twitters }) => {
   return (
-    <GridTemplate pageType="twitters">
+    <GridTemplate>
       {twitters.map(({ title, created, content, twitterName, id }) => (
         <Card
           cardType="twitters"

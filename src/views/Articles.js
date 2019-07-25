@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 const Articles = ({ articles }) => {
   return (
-    <GridTemplate pageType="articles">
+    <GridTemplate>
       {articles.map(({ title, created, content, articleUrl, id }) => (
         <Card
           cardType="articles"
