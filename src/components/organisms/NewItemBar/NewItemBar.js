@@ -8,7 +8,7 @@ import withContext from 'hoc/withContext';
 
 const StyledWrapper = styled.div`
   border-left: 10px solid ${({ theme, activeColor }) => theme[activeColor]};
-  z-index: 9999;
+  z-index: 999;
   position: fixed;
   display: flex;
   padding: 100px 90px;
@@ -19,6 +19,8 @@ const StyledWrapper = styled.div`
   width: 680px;
   background-color: white;
   box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  transform: translate(${({ isVisible }) => (isVisible ? '0' : '100%')});
+  transition: transform 0.25s ease-in-out;
 `;
 
 const StyledTextArea = styled(Input)`
@@ -27,10 +29,15 @@ const StyledTextArea = styled(Input)`
   height: 30vh;
 `;
 
-const NewItemBar = ({ pageContext }) => (
-  <StyledWrapper>
+const StyledInput = styled(Input)`
+  margin-top: 30px;
+`;
+
+const NewItemBar = ({ pageContext, isVisible }) => (
+  <StyledWrapper isVisible={isVisible} activeColor={pageContext}>
     <Heading bigs>Create new {pageContext}</Heading>
-    <Input placeholder="title" />
+    <StyledInput placeholder={pageContext === 'twitters' ? 'Account Name' : 'Title'} />
+    {pageContext === 'articles' && <StyledInput placeholder="link" />}
     <StyledTextArea as="textarea" placeholder="title" />
     <Button activeColor={pageContext}>Add Note</Button>
   </StyledWrapper>
@@ -38,9 +45,11 @@ const NewItemBar = ({ pageContext }) => (
 
 NewItemBar.propTypes = {
   pageContext: PropTypes.oneOf(['notes', 'twitters', 'articles']),
+  isVisible: PropTypes.bool,
 };
 NewItemBar.defaultProps = {
   pageContext: 'notes',
+  isVisible: false,
 };
 
 export default withContext(NewItemBar);
