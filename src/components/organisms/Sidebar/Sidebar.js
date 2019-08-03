@@ -38,6 +38,8 @@ const StyledLogoLink = styled(NavLink)`
 
 const StyledLinksList = styled.ul`
   list-style: none;
+  margin: 0;
+  padding: 0;
 `;
 
 const StyledLogoutButton = styled(ButtonIcon)`
@@ -59,7 +61,7 @@ const Sidebar = ({ pageContext }) => {
           <ButtonIcon as={NavLink} to="/articles" icon={bulbIcon} activeclass="active" />
         </li>
       </StyledLinksList>
-      <StyledLogoutButton as={NavLink} to="/login" icon={logoutIcon} activeclass="active" />
+      <StyledLogoutButton as={NavLink} to="/login" icon={logoutIcon} />
     </StyledWrapper>
   );
 };
