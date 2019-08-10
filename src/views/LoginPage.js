@@ -42,10 +42,9 @@ const LoginPage = ({ authenticate, userID }) => {
         }}
       >
         {({ handleChange, handleBlur, values }) => {
-          console.log(userID, 'userID');
-          // if (userID) {
-          //   return <Redirect to={routes.home} />;
-          // }
+          if (userID) {
+            return <Redirect to={routes.home} />;
+          }
           return (
             <>
               <Heading>Sign in</Heading>

@@ -9,6 +9,8 @@
     "window": true
   },
   "rules": {
+    "no-underscore-dangle": 0,
+    "react/prop-types": 0,
     "import/prefer-default-export": 0,
     "import/no-extraneous-dependencies": 0,
     "import/no-unresolved": 1,
@@ -22,7 +24,7 @@
   "settings": {
     "import/resolver": {
       "node": {
-        "paths": ["src"],
+        "paths": ["./src"],
         "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
     }

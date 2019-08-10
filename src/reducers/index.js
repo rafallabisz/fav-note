@@ -103,10 +103,8 @@ const initialState = {
 const rootReducers = (state = initialState, action) => {
   switch (action.type) {
     case AUTH_SUCCESS:
-      console.log(action, 'payload');
       return {
         ...state,
-        /* eslint no-underscore-dangle: ["error", { "allow": ["_id"] }] */
         userID: action.payload.data._id,
       };
     case ADD_ITEM:

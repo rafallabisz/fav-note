@@ -40,10 +40,8 @@ export const authenticate = (username, password) => dispatch => {
       username,
       password,
     })
-    .then(payload => {
-      console.log(payload);
-      /* eslint no-underscore-dangle: ["error", { "allow": ["_id"] }] */
-      dispatch({ type: AUTH_SUCCESS }, payload);
+    .then(result => {
+      dispatch({ type: AUTH_SUCCESS, payload: result });
     })
     .catch(err => {
       console.log(err);
