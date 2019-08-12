@@ -16,11 +16,10 @@ class Twitters extends Component {
 
     return (
       <GridTemplate>
-        {twitters.map(({ title, created, content, twitterName, id }) => (
+        {twitters.map(({ title, created, content, twitterName, _id: id }) => (
           <Card
             cardType="twitters"
             title={title}
-            created={created}
             content={content}
             twitterName={twitterName}
             key={id}
@@ -35,11 +34,10 @@ class Twitters extends Component {
 Twitters.propTypes = {
   twitters: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      _id: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
       content: PropTypes.string.isRequired,
       twitterName: PropTypes.string.isRequired,
-      created: PropTypes.string.isRequired,
     }),
   ),
 };

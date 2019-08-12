@@ -1,26 +1,26 @@
 import React from 'react';
 import DetailsTemplate from 'templates/DetailsTemplate';
+import withContext from 'hoc/withContext';
+import { connect } from 'react-redux';
 
-const DetailsPage = () => {
-  const dummyArticle = {
-    id: 1,
-    title: 'Wake me up when Vue ends',
-    content:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
-    twitterName: 'hello_roman',
-    articleUrl: 'https://youtube.com/helloroman',
-    created: '1 day',
-  };
+const DetailsPage = ({ activeItem }) => {
+  const [item] = activeItem;
 
   return (
     <DetailsTemplate
-      title={dummyArticle.title}
-      created={dummyArticle.created}
-      content={dummyArticle.content}
-      articleUrl={dummyArticle.articleUrl}
-      twitterName={dummyArticle.twitterName}
+      title={item.title}
+      created={item.created}
+      content={item.content}
+      articleUrl={item.articleUrl}
+      twitterName={item.twitterName}
     />
   );
 };
 
-export default DetailsPage;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    activeItem: state[ownProps.pageContext].filter(item => item._id === ownProps.match.params.id),
+  };
+};
+
+export default withContext(connect(mapStateToProps)(DetailsPage));
