@@ -83,23 +83,14 @@ class Card extends Component {
     });
 
   render() {
-    const {
-      id,
-      pageContext,
-      title,
-      created,
-      twitterName,
-      articleUrl,
-      content,
-      removeItem,
-    } = this.props;
+    const { id, pageContext, title, twitterName, articleUrl, content, removeItem } = this.props;
     const { redirect } = this.state;
     if (redirect) {
       return <Redirect to={`${pageContext}/${id}`} />;
     }
     return (
-      <StyledWrapper onClick={this.handleCardClick}>
-        <InnerWrapper activeColor={pageContext}>
+      <StyledWrapper>
+        <InnerWrapper onClick={this.handleCardClick} activeColor={pageContext}>
           <StyledHeading>{title}</StyledHeading>
           {/* <DateInfo>{created}</DateInfo> */}
           {pageContext === 'twitters' && (
